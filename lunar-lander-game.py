@@ -45,3 +45,50 @@ class Explosion(Sprite):
 class Turrain(Sprite):
     def __init__(self, asset, position):
         super().__init__(asset, position)
+        
+class Lander(Sprite):
+    ship = PolygonAsset([(0,30), (15,0), (30,30), (15,15)], noline, black)
+    
+    def __init__(self, position, width, height):
+        self.radius = 15
+        super().__init__(Ship.ship, position, CircleAsset(self.radius))
+        self.vx = 0
+        self.vy = 0
+        self.ay = 0.005
+        
+        
+    def step(self):
+        self.x += self.vx
+        self.y += self.vy
+        self.vy += self.ay
+        
+        
+class TankGame(App):
+    def __init__(self):
+        super().__init__()
+        
+        self.turrainheight = 0
+        self.turrainwidth = 15
+        self.createTurrain()
+        
+    def createTurrain(self):
+        self.turrainheight = random.randint(self.height * 3 // 4, self.height - 20)
+        for x in range(0, self.width // self.turrainwidth + 1):
+            self.turrainheight = self.turrainheight + random.randint(-30, 30)
+            if self.turrainheight > self.height - 10:
+                self.turrainheight -= 50
+            elif self.turrainheight < 50:
+                self.turrainheight += 50
+            Turrain(RectangleAsset(self.turrainwidth, self.height * 2, noline, black), (x * self.turrainwidth, self.turrainheight))
+            if x == self.player1.x:
+                self.player1.x = self.player1.x * self.turrainwidth + self.turrainwidth / 2
+                self.player1.y = self.turrainheight
+            if x == self.player2.x:
+                self.player2.x = self.player2.x * self.turrainwidth + self.turrainwidth / 2
+                self.player2.y = self.turrainheight
+        Lander.wind = random.randint(-5,5)
+        self.windstrength = ["Very Strong West Wind", "Strong West Wind", "Moderate West Wind", "Light to Moderate West Wind", "Light West Wind", "No Wind", "Light East Wind", "Light to Moderate East Wind", "Moderate East Wind", "Strong East Wind", "Very Strong East Wind"]
+        print(self.windstrength[Bullet.wind + 5])
+        
+    def step(self):
+        self.lander.step()

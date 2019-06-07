@@ -63,7 +63,7 @@ class Lander(Sprite):
         self.vy += self.ay
         
         
-class TankGame(App):
+class LunarLanderGame(App):
     def __init__(self):
         super().__init__()
         
@@ -92,3 +92,6 @@ class TankGame(App):
         
     def step(self):
         self.lander.step()
+        
+myapp = LunarLanderGame()
+myapp.run()

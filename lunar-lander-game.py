@@ -55,7 +55,7 @@ class Lander(Sprite):
         super().__init__(Lander.ship, position, CircleAsset(self.radius))
         self.vx = 0
         self.vy = 0
-        self.ay = 0.005
+        self.ay = 0.01
         
         
     def step(self):

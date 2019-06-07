@@ -62,7 +62,7 @@ class Lander(Sprite):
         self.x += self.vx
         self.y += self.vy
         self.vy += self.ay
-        self.vx += self.wind * 0.005
+        self.vx += self.wind * 0.0025
         
         
 class LunarLanderGame(App):

@@ -52,7 +52,7 @@ class Lander(Sprite):
     
     def __init__(self, position):
         self.radius = 15
-        super().__init__(Ship.ship, position, CircleAsset(self.radius))
+        super().__init__(Lander.ship, position, CircleAsset(self.radius))
         self.vx = 0
         self.vy = 0
         self.ay = 0.005

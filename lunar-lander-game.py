@@ -68,6 +68,8 @@ class LunarLanderGame(App):
     def __init__(self):
         super().__init__()
         
+        self.lander = Lander((self.width / 2, 30))
+        
         self.turrainheight = 0
         self.turrainwidth = 15
         self.createTurrain()
@@ -86,7 +88,7 @@ class LunarLanderGame(App):
         print(self.windstrength[Lander.wind + 5])
         
     def step(self):
-        #self.lander.step()
+        self.lander.step()
         
 myapp = LunarLanderGame()
 myapp.run()

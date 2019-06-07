@@ -82,7 +82,7 @@ class LunarLanderGame(App):
             Turrain(RectangleAsset(self.turrainwidth, self.height * 2, noline, black), (x * self.turrainwidth, self.turrainheight))
         Lander.wind = random.randint(-5,5)
         self.windstrength = ["Very Strong West Wind", "Strong West Wind", "Moderate West Wind", "Light to Moderate West Wind", "Light West Wind", "No Wind", "Light East Wind", "Light to Moderate East Wind", "Moderate East Wind", "Strong East Wind", "Very Strong East Wind"]
-        print(self.windstrength[Bullet.wind + 5])
+        print(self.windstrength[Lander.wind + 5])
         
     def step(self):
         self.lander.step()

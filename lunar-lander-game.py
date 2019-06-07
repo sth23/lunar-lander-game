@@ -48,7 +48,6 @@ class Turrain(Sprite):
         
 class Lander(Sprite):
     ship = PolygonAsset([(0,30), (15,0), (30,30), (15,15)], noline, black)
-    wind = 0
     
     def __init__(self, position):
         self.radius = 15
@@ -56,12 +55,14 @@ class Lander(Sprite):
         self.vx = 0
         self.vy = 0
         self.ay = 0.01
+        self.wind = 0
         
         
     def step(self):
         self.x += self.vx
         self.y += self.vy
         self.vy += self.ay
+        self.vx += self.wind
         
         
 class LunarLanderGame(App):
@@ -83,9 +84,9 @@ class LunarLanderGame(App):
             elif self.turrainheight < 50:
                 self.turrainheight += 50
             Turrain(RectangleAsset(self.turrainwidth, self.height * 2, noline, black), (x * self.turrainwidth, self.turrainheight))
-        Lander.wind = random.randint(-5,5)
+        self.lander.wind = random.randint(-5,5)
         self.windstrength = ["Very Strong West Wind", "Strong West Wind", "Moderate West Wind", "Light to Moderate West Wind", "Light West Wind", "No Wind", "Light East Wind", "Light to Moderate East Wind", "Moderate East Wind", "Strong East Wind", "Very Strong East Wind"]
-        print(self.windstrength[Lander.wind + 5])
+        print(self.windstrength[self.lander.wind + 5])
         
     def step(self):
         self.lander.step()

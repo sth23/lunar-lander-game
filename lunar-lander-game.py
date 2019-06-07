@@ -54,14 +54,19 @@ class Lander(Sprite):
         super().__init__(Lander.ship, position, CircleAsset(self.radius))
         self.vx = 0
         self.vy = 0
-        self.ay = 0.02
+        self.gravity = 0.02
         self.wind = 0
-        
+        self.thrust = 1
+        self.rotation = 1
+    """    
+    def thustOn(self, event):
+        self.vx += 
+    """    
         
     def step(self):
         self.x += self.vx
         self.y += self.vy
-        self.vy += self.ay
+        self.vy += self.gravity
         self.vx += self.wind * 0.0025
         
         

@@ -50,7 +50,7 @@ class Lander(Sprite):
     ship = PolygonAsset([(0,30), (15,0), (30,30), (15,15)], noline, black)
     wind = 0
     
-    def __init__(self, position, width, height):
+    def __init__(self, position):
         self.radius = 15
         super().__init__(Ship.ship, position, CircleAsset(self.radius))
         self.vx = 0

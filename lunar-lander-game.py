@@ -5,7 +5,7 @@ Credit: Tutorials
 Assignment: Create an old-school lunar lander game
 """
 
-from ggame import App, RectangleAsset, CircleAsset, LineAsset, ImageAsset, Frame, Sprite, LineStyle, Color
+from ggame import App, RectangleAsset, PolygonAsset, CircleAsset, LineAsset, ImageAsset, Frame, Sprite, LineStyle, Color
 import math
 import random
 

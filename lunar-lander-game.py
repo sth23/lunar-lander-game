@@ -93,7 +93,7 @@ class LunarLanderGame(App):
         self.lander = Lander((self.width / 2, 30))
         
         self.turrainheight = 0
-        self.turrainwidth = 15
+        self.turrainwidth = 20
         self.createTurrain()
         
     def createTurrain(self):

@@ -66,7 +66,7 @@ class Lander(Sprite):
         self.paused = True
         self.fxcenter = self.fycenter = 0.5
         self.speed = 0
-        self.speedlimit = 0.75
+        self.speedlimit = 1
         self.landed = False
         self.crashed = False
         

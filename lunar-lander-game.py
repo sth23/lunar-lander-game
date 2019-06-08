@@ -47,7 +47,7 @@ class Turrain(Sprite):
         super().__init__(asset, position)
         
 class Lander(Sprite):
-    ship = PolygonAsset([(0,30), (15,0), (30,30), (15,15)], noline, black)
+    ship = PolygonAsset([(0,15), (7.5,0), (15,15), (7.5,7.5)], noline, black)
     
     def __init__(self, position):
         self.radius = 15

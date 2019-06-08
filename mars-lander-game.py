@@ -159,6 +159,13 @@ class MarsLanderGame(App):
         print('Press "Enter" to play again')
         print("")
         
+    def miss(self, lander):
+        lander.landed = True
+        lander.rotation = 0
+        print('You missed the landing zone')
+        print('Press "Enter" to play again')
+        print("")
+        
     def step(self):
         for lander in self.getSpritesbyClass(Lander):
             if lander.landed == False and lander.crashed == False:
@@ -173,11 +180,7 @@ class MarsLanderGame(App):
                     elif lander.x - lander.radius < self.turrain[0].x or lander.x + lander.radius > self.turrain[0].x + self.turrainwidth:
                         self.crash(lander)
                     else:
-                        lander.landed = True
-                        lander.rotation = 0
-                        print('You missed the landing zone')
-                        print('Press "Enter" to play again')
-                        print("")
+                        self.miss(lander)
                 elif self.landingarea:
                     if lander.speed > lander.speedlimit or self.landingarea[0].y > lander.y + lander.radius:
                         self.crash(lander)
@@ -189,13 +192,9 @@ class MarsLanderGame(App):
                         print('Press "Enter" to play again')
                         print("")
                 elif lander.x < 10 or lander.x > self.width - 10:
-                        lander.landed = True
-                        lander.rotation = 0
+                        self.miss(lander)
                         lander.x = -100
                         lander.y = -100
-                        print('You missed the landing zone')
-                        print('Press "Enter" to play again')
-                        print("")
         self.turrain = []
         self.landingarea = []
                     

@@ -102,7 +102,7 @@ class LunarLanderGame(App):
         self.turrainwidth = 30
         self.createTurrain()
         
-        LunarLanderGame.listenKeyEvent("enter", "keydown", self.playAgain)
+        LunarLanderGame.listenKeyEvent("return", "keydown", self.playAgain)
         
     def playAgain(self, event):
         print("Test")

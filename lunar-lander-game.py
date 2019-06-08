@@ -102,6 +102,16 @@ class LunarLanderGame(App):
         self.turrainwidth = 30
         self.createTurrain()
         
+        LunarLanderGame.listenKeyEvent("enter", "keydown", self.playAgain)
+        
+    def playAgain(self, event):
+        self.createTurrain()
+        for lander in self.getSpritesbyClass(Lander):
+            lander.x = self.width / 2
+            lander.y = 30
+            lander.paused = True
+        
+        
     def createTurrain(self):
         self.turrainheight = random.randint(self.height * 3 // 4, self.height - 20)
         for x in range(0, self.width // self.turrainwidth + 1):

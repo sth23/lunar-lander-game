@@ -166,9 +166,7 @@ class MarsLanderGame(App):
                 self.turrain = lander.collidingWithSprites(Turrain)
                 self.landingarea = lander.collidingWithSprites(LandingArea)
                 if self.turrain:
-                    if lander.rotation > 1 or lander.rotation < -1 or lander.speed > lander.speedlimit:
-                        self.crash(lander)
-                    elif turrain[0].y > lander.y + lander.radius:
+                    if lander.rotation > 1 or lander.rotation < -1 or lander.speed > lander.speedlimit or self.turrain[0].y > lander.y + lander.radius:
                         self.crash(lander)
                     else:
                         lander.landed = True

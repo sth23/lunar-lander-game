@@ -108,6 +108,8 @@ class MarsLanderGame(App):
         self.turrainheight = 0
         self.turrainwidth = 30
         self.createTurrain()
+        self.turrain = []
+        self.landingarea = []
         
         MarsLanderGame.listenKeyEvent("keydown", "enter", self.playAgain)
         
@@ -161,10 +163,12 @@ class MarsLanderGame(App):
         for lander in self.getSpritesbyClass(Lander):
             if lander.landed == False and lander.crashed == False:
                 lander.step()
-                if lander.collidingWithSprites(Turrain):
+                self.turrain = lander.collidingWithSprites(Turrain)
+                self.landingarea = lander.collidingWithSprites(LandingArea)
+                if self.turrain:
                     if lander.rotation > 1 or lander.rotation < -1 or lander.speed > lander.speedlimit:
                         self.crash(lander)
-                    elif lander.collidingWithSprites(Turrain)[0].y > lander.y + lander.radius:
+                    elif turrain[0].y > lander.y + lander.radius:
                         self.crash(lander)
                     else:
                         lander.landed = True
@@ -172,8 +176,8 @@ class MarsLanderGame(App):
                         print('You missed the landing zone')
                         print('Press "Enter" to play again')
                         print("")
-                elif lander.collidingWithSprites(LandingArea):
-                    if lander.speed > lander.speedlimit or lander.collidingWithSprites(LandingArea)[0].y > lander.y + lander.radius:
+                elif self.landingarea:
+                    if lander.speed > lander.speedlimit or self.landingarea[0].y > lander.y + lander.radius:
                         self.crash(lander)
                     else:
                         lander.landed = True
@@ -190,6 +194,8 @@ class MarsLanderGame(App):
                         print('You missed the landing zone')
                         print('Press "Enter" to play again')
                         print("")
+        self.turrain = []
+        self.landingarea = []
                     
         for explosion in self.getSpritesbyClass(Explosion):
             explosion.step()

@@ -56,7 +56,7 @@ class Lander(Sprite):
         self.vy = 0
         self.gravity = 0.02
         self.wind = 0
-        self.thrust = 1
+        self.thrust = 0.04
         self.rotation = 0
         
         LunarLanderGame.listenKeyEvent("keydown", "up arrow", self.thrustOn)

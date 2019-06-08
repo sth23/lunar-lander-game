@@ -107,13 +107,14 @@ class LunarLanderGame(App):
         
     def playAgain(self, event):
         for lander in self.getSpritesbyClass(Lander):
-            if lander.landed == True:
+            if lander.landed == True or lander.crashed == True:
                 lander.landed = False
+                lander.crashed = False
+                lander.paused = True
                 lander.x = self.width / 2
                 lander.y = 30
                 lander.vx = 0
                 lander.vy = 0
-                lander.paused = True
                 [turrain.destroy() for turrain in self.getSpritesbyClass(Turrain)]
                 self.createTurrain()
         

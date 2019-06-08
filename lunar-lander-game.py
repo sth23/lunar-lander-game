@@ -151,7 +151,7 @@ class LunarLanderGame(App):
                     else:
                         lander.landed = True
                         lander.rotation = 0
-                        
+                        lander.speedlimit -= 0.05
                         print('You landed successfully!  Congratulations!')
                         print('Press "Enter" to play again')
                         print("")

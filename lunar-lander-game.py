@@ -117,7 +117,7 @@ class LunarLanderGame(App):
         
     def step(self):
         for lander in self.getSpritesbyClass(Lander):
-            if landed == False:
+            if lander.landed == False:
                 lander.step()
                 if lander.collidingWithSprites(Turrain):
                     if lander.rotation > 1 or lander.rotation < -1 or lander.speed > 1:

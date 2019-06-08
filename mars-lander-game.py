@@ -152,7 +152,7 @@ class MarsLanderGame(App):
         for lander in self.getSpritesbyClass(Lander):
             if lander.landed == False and lander.crashed == False:
                 lander.step()
-                for turrain in lander.collidingWithSprites(Turrain)
+                for turrain in lander.collidingWithSprites(Turrain):
                     if turrain:
                         if lander.rotation > 1 or lander.rotation < -1 or lander.speed > lander.speedlimit or lander.y + lander.radius > turrain.y:
                             Explosion((lander.x, lander.y))

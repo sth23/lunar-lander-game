@@ -1,11 +1,11 @@
 """
-Final Project: Lunar Lander Game
+Final Project: Mars Lander Game
 Author: Sean
 Credit: Tutorials
-Assignment: Create an old-school lunar lander game
+Assignment: Create an old-school Mars Lander game
 """
 
-from ggame import App, RectangleAsset, PolygonAsset, CircleAsset, LineAsset, ImageAsset, Frame, Sprite, LineStyle, Color
+from ggame import App, RectangleAsset, PolygonAsset, CircleAsset, ImageAsset, Frame, Sprite, LineStyle, Color
 import math
 import random
 
@@ -66,10 +66,10 @@ class Lander(Sprite):
         self.landed = False
         self.crashed = False
         
-        LunarLanderGame.listenKeyEvent("keydown", "up arrow", self.thrustOn)
-        LunarLanderGame.listenKeyEvent("keydown", "right arrow", self.rotateRight)
-        LunarLanderGame.listenKeyEvent("keydown", "left arrow", self.rotateLeft)
-        LunarLanderGame.listenKeyEvent("keydown", "space", self.togglePause)
+        MarsLanderGame.listenKeyEvent("keydown", "up arrow", self.thrustOn)
+        MarsLanderGame.listenKeyEvent("keydown", "right arrow", self.rotateRight)
+        MarsLanderGame.listenKeyEvent("keydown", "left arrow", self.rotateLeft)
+        MarsLanderGame.listenKeyEvent("keydown", "space", self.togglePause)
         
     def thrustOn(self, event):
         self.vx += -self.thrust * math.sin(self.rotation)
@@ -94,7 +94,7 @@ class Lander(Sprite):
             self.vx += self.wind * 0.001
             self.speed = (self.vx ** 2 + self.vy ** 2) ** 0.5
         
-class LunarLanderGame(App):
+class MarsLanderGame(App):
     def __init__(self):
         super().__init__()
         
@@ -104,7 +104,7 @@ class LunarLanderGame(App):
         self.turrainwidth = 30
         self.createTurrain()
         
-        LunarLanderGame.listenKeyEvent("keydown", "enter", self.playAgain)
+        MarsLanderGame.listenKeyEvent("keydown", "enter", self.playAgain)
         
     def playAgain(self, event):
         for lander in self.getSpritesbyClass(Lander):
@@ -167,5 +167,5 @@ class LunarLanderGame(App):
         for explosion in self.getSpritesbyClass(Explosion):
             explosion.step()
         
-myapp = LunarLanderGame()
+myapp = MarsLanderGame()
 myapp.run()

@@ -46,6 +46,10 @@ class Turrain(Sprite):
     def __init__(self, asset, position):
         super().__init__(asset, position)
         
+class LandingArea(Sprite):
+    def __init__(self, asset, position):
+        super().__init__(asset, position)
+        
 class Lander(Sprite):
     ship = PolygonAsset([(0,15), (7.5,0), (15,15), (7.5,7.5)], noline, black)
     
@@ -134,7 +138,7 @@ class MarsLanderGame(App):
             if self.landingarea != x:
                 Turrain(RectangleAsset(self.turrainwidth, self.height * 2, noline, black), (x * self.turrainwidth, self.turrainheight))
             else:
-                Turrain(RectangleAsset(self.turrainwidth, self.height * 2, noline, red), (x * self.turrainwidth, self.turrainheight))
+                LandingArea(RectangleAsset(self.turrainwidth, self.height * 2, noline, red), (x * self.turrainwidth, self.turrainheight))
                 
         #self.lander.wind = random.randint(-5,5)
         self.windstrength = ["Very Strong West Wind", "Strong West Wind", "Moderate West Wind", "Light to Moderate West Wind", "Light West Wind", "No Wind", "Light East Wind", "Light to Moderate East Wind", "Moderate East Wind", "Strong East Wind", "Very Strong East Wind"]
@@ -157,15 +161,16 @@ class MarsLanderGame(App):
                     else:
                         lander.landed = True
                         lander.rotation = 0
-                        #lander.speedlimit -= 0.05
-                        if lander.x < self.landingarea * self.turrainwidth or lander.x > (self.landingarea + 1) * self.turrainwidth:
-                            print('You missed the landing zone')
-                            print('Press "Enter" to play again')
-                            print("")
-                        else:
-                            print('You landed successfully!  Congratulations!')
-                            print('Press "Enter" to play again')
-                            print("")
+                        print('You missed the landing zone')
+                        print('Press "Enter" to play again')
+                        print("")
+                elif lander.collidingWithSprites(LandingArea):
+                    lander.landed = True
+                    lander.rotation = 0
+                    #lander.speedlimit -= 0.05
+                    print('You landed successfully!  Congratulations!')
+                    print('Press "Enter" to play again')
+                    print("")
                 elif lander.x < 10 or lander.x > self.width - 10:
                     Explosion((lander.x, lander.y))
                     lander.x = -100

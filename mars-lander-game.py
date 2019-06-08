@@ -127,7 +127,7 @@ class MarsLanderGame(App):
             lander.paused = True
             lander.landed = False
             lander.crashed = False
-            if lander.landingarea = True:
+            if lander.landingarea == True:
                 self.resetLander(lander)
                 [turrain.destroy() for turrain in self.getSpritesbyClass(Turrain)]
                 [landingarea.destroy() for landingarea in self.getSpritesbyClass(LandingArea)]

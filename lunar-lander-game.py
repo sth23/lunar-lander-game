@@ -63,6 +63,7 @@ class Lander(Sprite):
         self.fxcenter = self.fycenter = 0.5
         self.speed = 0
         self.landed = False
+        self.crashed = False
         
         LunarLanderGame.listenKeyEvent("keydown", "up arrow", self.thrustOn)
         LunarLanderGame.listenKeyEvent("keydown", "right arrow", self.rotateRight)
@@ -85,7 +86,7 @@ class Lander(Sprite):
         self.paused = not self.paused
         
     def step(self):
-        if self.paused == False and self.landed == False:
+        if self.paused == False and self.landed == False and self.crashed == False:
             self.x += self.vx
             self.y += self.vy
             self.vy += self.gravity
@@ -105,7 +106,6 @@ class LunarLanderGame(App):
         LunarLanderGame.listenKeyEvent("keydown", "enter", self.playAgain)
         
     def playAgain(self, event):
-        print("Test")
         for lander in self.getSpritesbyClass(Lander):
             if lander.landed == True:
                 lander.landed = False
@@ -138,7 +138,9 @@ class LunarLanderGame(App):
                 if lander.collidingWithSprites(Turrain):
                     if lander.rotation > 1 or lander.rotation < -1 or lander.speed > 1:
                         Explosion((lander.x, lander.y))
-                        lander.destroy()
+                        lander.x = -100
+                        lander.y = -100
+                        lander.crashed = True
                     else:
                         lander.landed = True
                         print('Press "Enter" to play again')

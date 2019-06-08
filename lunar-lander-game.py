@@ -105,6 +105,7 @@ class LunarLanderGame(App):
         LunarLanderGame.listenKeyEvent("Enter", "keydown", self.playAgain)
         
     def playAgain(self, event):
+        print("Test")
         for lander in self.getSpritesbyClass(Lander):
             if lander.landed == True:
                 lander.x = self.width / 2

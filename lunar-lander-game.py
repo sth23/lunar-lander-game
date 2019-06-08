@@ -157,7 +157,11 @@ class MarsLanderGame(App):
                     else:
                         lander.landed = True
                         lander.rotation = 0
-                        lander.speedlimit -= 0.05
+                        #lander.speedlimit -= 0.05
+                        if lander.x < self.landingarea * self.turrainwidth or if lander.x > self.landingarea * self.turrainwidth:
+                            print('You missed the landing zone')
+                            print('Press "Enter" to play again')
+                            print("")
                         print('You landed successfully!  Congratulations!')
                         print('Press "Enter" to play again')
                         print("")

@@ -124,6 +124,7 @@ class LunarLanderGame(App):
                     lander.destroy()
                 else:
                     lander.landed = True
+                    print('Press "Enter" to play again')
                 
         for explosion in self.getSpritesbyClass(Explosion):
             explosion.step()

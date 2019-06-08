@@ -113,6 +113,7 @@ class LunarLanderGame(App):
                 lander.paused = True
                 lander.x = self.width / 2
                 lander.y = 30
+                lander.rotation = 0
                 lander.vx = 0
                 lander.vy = 0
                 [turrain.destroy() for turrain in self.getSpritesbyClass(Turrain)]
@@ -142,16 +143,16 @@ class LunarLanderGame(App):
                         lander.x = -100
                         lander.y = -100
                         lander.crashed = True
-                        print('Press "Enter" to play again1')
+                        print('Press "Enter" to play again')
                     else:
                         lander.landed = True
-                        print('Press "Enter" to play again2')
+                        print('Press "Enter" to play again')
                 elif lander.x < 10 or lander.x > self.width - 10:
                     Explosion((lander.x, lander.y))
                     lander.x = -100
                     lander.y = -100
                     lander.crashed = True
-                    print('Press "Enter" to play again3')
+                    print('Press "Enter" to play again')
                     
         for explosion in self.getSpritesbyClass(Explosion):
             explosion.step()

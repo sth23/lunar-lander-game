@@ -105,6 +105,7 @@ class LunarLanderGame(App):
         LunarLanderGame.listenKeyEvent("enter", "keydown", self.playAgain)
         
     def playAgain(self, event):
+        [turrain.destroy() for turrain in self.getSpritesbyClass(Turrain)]
         self.createTurrain()
         for lander in self.getSpritesbyClass(Lander):
             lander.x = self.width / 2

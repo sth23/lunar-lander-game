@@ -50,7 +50,7 @@ class Lander(Sprite):
     ship = PolygonAsset([(0,15), (7.5,0), (15,15), (7.5,7.5)], noline, black)
     
     def __init__(self, position):
-        self.radius = 15
+        self.radius = 7.5
         super().__init__(Lander.ship, position, CircleAsset(self.radius))
         self.vx = 0
         self.vy = 0
@@ -60,6 +60,7 @@ class Lander(Sprite):
         self.vr = 0.05
         self.rotation = 0
         self.paused = True
+        self.fxcenter = self.fycenter = 0.5
         
         LunarLanderGame.listenKeyEvent("keydown", "up arrow", self.thrustOn)
         LunarLanderGame.listenKeyEvent("keydown", "right arrow", self.rotateRight)

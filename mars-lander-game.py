@@ -166,12 +166,21 @@ class MarsLanderGame(App):
                         print('Press "Enter" to play again')
                         print("")
                 elif lander.collidingWithSprites(LandingArea):
-                    lander.landed = True
-                    lander.rotation = 0
-                    #lander.speedlimit -= 0.05
-                    print('You landed successfully!  Congratulations!')
-                    print('Press "Enter" to play again')
-                    print("")
+                    if lander.speed > lander.speedlimit:
+                        Explosion((lander.x, lander.y))
+                        lander.x = -100
+                        lander.y = -100
+                        lander.crashed = True
+                        print('You crashed')
+                        print('Press "Enter" to play again')
+                        print("")
+                    else:
+                        lander.landed = True
+                        lander.rotation = 0
+                        #lander.speedlimit -= 0.05
+                        print('You landed successfully!  Congratulations!')
+                        print('Press "Enter" to play again')
+                        print("")
                 elif lander.x < 10 or lander.x > self.width - 10:
                     Explosion((lander.x, lander.y))
                     lander.x = -100

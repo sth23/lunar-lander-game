@@ -108,6 +108,7 @@ class LunarLanderGame(App):
         print("Test")
         for lander in self.getSpritesbyClass(Lander):
             if lander.landed == True:
+                lander.landed = False
                 lander.x = self.width / 2
                 lander.y = 30
                 lander.paused = True

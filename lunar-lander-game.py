@@ -72,10 +72,12 @@ class Lander(Sprite):
         self.vy += -self.thrust * math.cos(self.rotation)
         
     def rotateRight(self, event):
-        self.rotation -= self.vr
+        if self.paused == False:
+            self.rotation -= self.vr
         
     def rotateLeft(self, event):
-        self.rotation += self.vr
+        if self.paused == False:
+            self.rotation += self.vr
         
     def togglePause(self, event):
         self.paused = not self.paused

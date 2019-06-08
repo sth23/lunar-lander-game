@@ -145,6 +145,8 @@ class MarsLanderGame(App):
         self.windstrength = ["Very Strong West Wind", "Strong West Wind", "Moderate West Wind", "Light to Moderate West Wind", "Light West Wind", "No Wind", "Light East Wind", "Light to Moderate East Wind", "Moderate East Wind", "Strong East Wind", "Very Strong East Wind"]
         print(self.windstrength[self.lander.wind + 5])
         print("")
+        print('Press "Space" to start')
+        print("")
         
     def step(self):
         for lander in self.getSpritesbyClass(Lander):

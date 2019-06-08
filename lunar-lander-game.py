@@ -110,7 +110,7 @@ class LunarLanderGame(App):
         print(self.windstrength[self.lander.wind + 5])
         
     def step(self):
-        [x.step() for x in getSpritesByClass(Lander)]
+        [x.step() for x in self.getSpritesByClass(Lander)]
         
 myapp = LunarLanderGame()
 myapp.run()

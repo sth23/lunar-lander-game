@@ -80,7 +80,7 @@ class Lander(Sprite):
         self.paused = not self.paused
         
     def step(self):
-        if self.paused = False
+        if self.paused == False:
             self.x += self.vx
             self.y += self.vy
             self.vy += self.gravity

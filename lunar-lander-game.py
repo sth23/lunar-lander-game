@@ -119,6 +119,9 @@ class LunarLanderGame(App):
             lander.step()
             if lander.collidingWithSprites(Turrain):
                 Explosion((lander.x, lander.y))
+                
+        for explosion in self.getSpritesbyClass(Explosion):
+            explosion.step()
         
 myapp = LunarLanderGame()
 myapp.run()

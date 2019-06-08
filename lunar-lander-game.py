@@ -146,12 +146,12 @@ class LunarLanderGame(App):
                     else:
                         lander.landed = True
                         print('Press "Enter" to play again2')
-            elif lander.x < 10 or lander.x > self.width - 10:
-                Explosion((lander.x, lander.y))
-                lander.x = -100
-                lander.y = -100
-                lander.crashed == True
-                print('Press "Enter" to play again3')
+                elif lander.x < 10 or lander.x > self.width - 10:
+                    Explosion((lander.x, lander.y))
+                    lander.x = -100
+                    lander.y = -100
+                    lander.crashed = True
+                    print('Press "Enter" to play again3')
                     
         for explosion in self.getSpritesbyClass(Explosion):
             explosion.step()

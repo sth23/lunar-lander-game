@@ -61,6 +61,7 @@ class Lander(Sprite):
         self.rotation = 0
         self.paused = True
         self.fxcenter = self.fycenter = 0.5
+        self.speed = 0
         
         LunarLanderGame.listenKeyEvent("keydown", "up arrow", self.thrustOn)
         LunarLanderGame.listenKeyEvent("keydown", "right arrow", self.rotateRight)
@@ -88,6 +89,7 @@ class Lander(Sprite):
             self.y += self.vy
             self.vy += self.gravity
             self.vx += self.wind * 0.001
+            self.speed = (self.vx ** 2 + self.vy ** 2) ** 0.5
         
 class LunarLanderGame(App):
     def __init__(self):
@@ -113,7 +115,11 @@ class LunarLanderGame(App):
         print(self.windstrength[self.lander.wind + 5])
         
     def step(self):
-        [x.step() for x in self.getSpritesbyClass(Lander)]
+        for lander in self.getSpritesbyClass(Lander):
+            lander.step()
+            if lander.collidingWithSprites(Turrain):
+                if lander.rotation > 1 or lander.rotation < -1 or lander.speed > 1:
+                    Explosion((lander.x, lander.y))
         
 myapp = LunarLanderGame()
 myapp.run()

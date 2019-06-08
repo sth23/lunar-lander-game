@@ -72,7 +72,7 @@ class Lander(Sprite):
         self.thrusting = False
         
         MarsLanderGame.listenKeyEvent("keydown", "up arrow", self.thrustOn)
-        MarsLanderGame.listenKeyEvent("keyup", "up arrow", self.ThrustOff)
+        MarsLanderGame.listenKeyEvent("keyup", "up arrow", self.thrustOff)
         MarsLanderGame.listenKeyEvent("keydown", "right arrow", self.rotateRight)
         MarsLanderGame.listenKeyEvent("keydown", "left arrow", self.rotateLeft)
         MarsLanderGame.listenKeyEvent("keydown", "space", self.togglePause)

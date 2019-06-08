@@ -106,7 +106,7 @@ class MarsLanderGame(App):
         
         self.landingarea = 0
         self.turrainheight = 0
-        self.turrainwidth = 30
+        self.turrainwidth = 40
         self.createTurrain()
         self.turrain = []
         self.landingarea = []

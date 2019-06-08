@@ -137,15 +137,18 @@ class LunarLanderGame(App):
             if lander.landed == False:
                 lander.step()
                 if lander.collidingWithSprites(Turrain):
-                    print(lander.x)
-                    if lander.rotation > 1 or lander.rotation < -1 or lander.speed > 1 or lander.x < 100 or lander.x > self.width - 100:
+                    if lander.rotation > 1 or lander.rotation < -1 or lander.speed > 1:
                         Explosion((lander.x, lander.y))
                         lander.x = -100
                         lander.y = -100
                         lander.crashed = True
+                        print('Press "Enter" to play again')
                     else:
                         lander.landed = True
                         print('Press "Enter" to play again')
+                elif lander.x < 10 or lander.x > self.width - 10:
+                    print('Press "Enter" to play again')
+                    
                 
         for explosion in self.getSpritesbyClass(Explosion):
             explosion.step()

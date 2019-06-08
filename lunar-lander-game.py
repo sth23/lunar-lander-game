@@ -149,6 +149,7 @@ class LunarLanderGame(App):
                         print("")
                     else:
                         lander.landed = True
+                        lander.rotation = 0
                         print('You landed successfully!  Congratulations!')
                         print('Press "Enter" to play again')
                         print("")

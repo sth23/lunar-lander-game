@@ -59,10 +59,12 @@ class Lander(Sprite):
         self.thrust = 0.05
         self.vr = 0.1
         self.rotation = 0
+        self.paused = True
         
         LunarLanderGame.listenKeyEvent("keydown", "up arrow", self.thrustOn)
         LunarLanderGame.listenKeyEvent("keydown", "right arrow", self.rotateRight)
         LunarLanderGame.listenKeyEvent("keydown", "left arrow", self.rotateLeft)
+        LunarLanderGame.listenKeyEvent("keydown", "space", self.togglePause)
         
     def thrustOn(self, event):
         self.vx += -self.thrust * math.sin(self.rotation)
@@ -74,11 +76,15 @@ class Lander(Sprite):
     def rotateLeft(self, event):
         self.rotation += self.vr
         
+    def togglePause(self, event):
+        self.paused = not self.paused
+        
     def step(self):
-        self.x += self.vx
-        self.y += self.vy
-        self.vy += self.gravity
-        self.vx += self.wind * 0.0025
+        if self.paused = False
+            self.x += self.vx
+            self.y += self.vy
+            self.vy += self.gravity
+            self.vx += self.wind * 0.0025
         
 class LunarLanderGame(App):
     def __init__(self):

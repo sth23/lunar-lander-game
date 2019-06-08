@@ -146,10 +146,12 @@ class LunarLanderGame(App):
                         lander.crashed = True
                         print('You crashed')
                         print('Press "Enter" to play again')
+                        print("")
                     else:
                         lander.landed = True
                         print('You landed successfully!  Congratulations!')
                         print('Press "Enter" to play again')
+                        print("")
                 elif lander.x < 10 or lander.x > self.width - 10:
                     Explosion((lander.x, lander.y))
                     lander.x = -100
@@ -157,6 +159,7 @@ class LunarLanderGame(App):
                     lander.crashed = True
                     print('You crashed')
                     print('Press "Enter" to play again')
+                    print("")
                     
         for explosion in self.getSpritesbyClass(Explosion):
             explosion.step()

@@ -100,6 +100,7 @@ class MarsLanderGame(App):
         
         self.lander = Lander((self.width / 2, 30))
         
+        self.landingarea = 0
         self.turrainheight = 0
         self.turrainwidth = 30
         self.createTurrain()
@@ -120,16 +121,21 @@ class MarsLanderGame(App):
                 [turrain.destroy() for turrain in self.getSpritesbyClass(Turrain)]
                 self.createTurrain()
         
-        
     def createTurrain(self):
         self.turrainheight = random.randint(self.height * 3 // 4, self.height - 20)
+        self.landingarea = random.randint(2, self.width // self.turrainwidth - 2)
         for x in range(0, self.width // self.turrainwidth + 1):
             self.turrainheight = self.turrainheight + random.randint(-30, 30)
             if self.turrainheight > self.height - 10:
                 self.turrainheight -= 50
             elif self.turrainheight < 50:
                 self.turrainheight += 50
-            Turrain(RectangleAsset(self.turrainwidth, self.height * 2, noline, black), (x * self.turrainwidth, self.turrainheight))
+            
+            if self.landingarea != x:
+                Turrain(RectangleAsset(self.turrainwidth, self.height * 2, noline, black), (x * self.turrainwidth, self.turrainheight))
+            else:
+                Turrain(RectangleAsset(self.turrainwidth, self.height * 2, noline, red), (x * self.turrainwidth, self.turrainheight))
+                
         self.lander.wind = random.randint(-5,5)
         self.windstrength = ["Very Strong West Wind", "Strong West Wind", "Moderate West Wind", "Light to Moderate West Wind", "Light West Wind", "No Wind", "Light East Wind", "Light to Moderate East Wind", "Moderate East Wind", "Strong East Wind", "Very Strong East Wind"]
         print(self.windstrength[self.lander.wind + 5])

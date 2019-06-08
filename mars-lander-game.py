@@ -183,7 +183,13 @@ class MarsLanderGame(App):
                         print('Press "Enter" to play again')
                         print("")
                 elif lander.x < 10 or lander.x > self.width - 10:
-                        self.crash(lander)
+                        lander.landed = True
+                        lander.rotation = 0
+                        lander.x = -100
+                        lander.y = -100
+                        print('You missed the landing zone')
+                        print('Press "Enter" to play again')
+                        print("")
                     
         for explosion in self.getSpritesbyClass(Explosion):
             explosion.step()

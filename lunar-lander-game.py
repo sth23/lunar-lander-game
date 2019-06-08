@@ -62,7 +62,7 @@ class Lander(Sprite):
         self.paused = True
         self.fxcenter = self.fycenter = 0.5
         self.speed = 0
-        self.landed = True
+        self.landed = False
         
         LunarLanderGame.listenKeyEvent("keydown", "up arrow", self.thrustOn)
         LunarLanderGame.listenKeyEvent("keydown", "right arrow", self.rotateRight)
@@ -85,7 +85,7 @@ class Lander(Sprite):
         self.paused = not self.paused
         
     def step(self):
-        if self.paused == False & self.landed == False:
+        if self.paused == False and self.landed == False:
             self.x += self.vx
             self.y += self.vy
             self.vy += self.gravity

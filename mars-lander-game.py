@@ -70,6 +70,7 @@ class Lander(Sprite):
         self.landed = False
         self.crashed = False
         self.thrusting = False
+        self.landingarea = False
         
         MarsLanderGame.listenKeyEvent("keydown", "up arrow", self.thrustOn)
         MarsLanderGame.listenKeyEvent("keyup", "up arrow", self.thrustOff)
@@ -123,18 +124,23 @@ class MarsLanderGame(App):
         
     def playAgain(self, event):
         for lander in self.getSpritesbyClass(Lander):
-            if lander.landed == True or lander.crashed == True:
-                lander.landed = False
-                lander.crashed = False
-                lander.paused = True
-                lander.x = self.width / 2
-                lander.y = 30
-                lander.rotation = 0
-                lander.vx = 0
-                lander.vy = 0
+            lander.paused = True
+            lander.landed = False
+            lander.crashed = False
+            if lander.landingarea = True:
+                self.resetLander(lander)
                 [turrain.destroy() for turrain in self.getSpritesbyClass(Turrain)]
                 [landingarea.destroy() for landingarea in self.getSpritesbyClass(LandingArea)]
                 self.createTurrain()
+            else:
+                self.resetLander(lander)
+
+    def resetLander(self, lander):
+        lander.x = self.width / 2
+        lander.y = 30
+        lander.rotation = 0
+        lander.vx = 0
+        lander.vy = 0
         
     def createTurrain(self):
         self.turrainheight = random.randint(self.height * 3 // 4, self.height - 20)

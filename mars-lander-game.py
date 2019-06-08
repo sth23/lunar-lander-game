@@ -66,7 +66,7 @@ class Lander(Sprite):
         self.paused = True
         self.fxcenter = self.fycenter = 0.5
         self.speed = 0
-        self.speedlimit = 1
+        self.speedlimit = 0.75
         self.landed = False
         self.crashed = False
         
@@ -123,6 +123,7 @@ class MarsLanderGame(App):
                 lander.vx = 0
                 lander.vy = 0
                 [turrain.destroy() for turrain in self.getSpritesbyClass(Turrain)]
+                [landingarea.destroy() for landingarea in self.getSpritesbyClass(LandingArea)]
                 self.createTurrain()
         
     def createTurrain(self):

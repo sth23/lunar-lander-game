@@ -90,6 +90,7 @@ class Lander(Sprite):
             self.vy += self.gravity
             self.vx += self.wind * 0.001
             self.speed = (self.vx ** 2 + self.vy ** 2) ** 0.5
+            print(self.speed)
         
 class LunarLanderGame(App):
     def __init__(self):

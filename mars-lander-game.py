@@ -148,7 +148,7 @@ class MarsLanderGame(App):
         print('Press "Space" to start / pause')
         print("")
         
-    def crash(self):
+    def crash(self, lander):
         Explosion((lander.x, lander.y))
         lander.x = -100
         lander.y = -100
@@ -163,9 +163,9 @@ class MarsLanderGame(App):
                 lander.step()
                 if lander.collidingWithSprites(Turrain):
                     if lander.rotation > 1 or lander.rotation < -1 or lander.speed > lander.speedlimit:
-                        self.crash()
+                        self.crash(lander)
                     elif lander.collidingWithSprites(Turrain).y < lander.y + lander.radius:
-                        self.crash()
+                        self.crash(lander)
                     else:
                         lander.landed = True
                         lander.rotation = 0
@@ -174,7 +174,7 @@ class MarsLanderGame(App):
                         print("")
                 elif lander.collidingWithSprites(LandingArea):
                     if lander.speed > lander.speedlimit:
-                        self.crash()
+                        self.crash(lander)
                     else:
                         lander.landed = True
                         lander.rotation = 0

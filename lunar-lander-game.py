@@ -121,6 +121,8 @@ class LunarLanderGame(App):
                 if lander.rotation > 1 or lander.rotation < -1 or lander.speed > 1:
                     Explosion((lander.x, lander.y))
                     lander.destroy()
+                else:
+                    lander.paused = not lander.paused
                 
         for explosion in self.getSpritesbyClass(Explosion):
             explosion.step()

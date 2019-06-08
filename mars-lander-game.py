@@ -148,19 +148,24 @@ class MarsLanderGame(App):
         print('Press "Space" to start / pause')
         print("")
         
+    def crash(self):
+        Explosion((lander.x, lander.y))
+        lander.x = -100
+        lander.y = -100
+        lander.crashed = True
+        print('You crashed')
+        print('Press "Enter" to play again')
+        print("")
+        
     def step(self):
         for lander in self.getSpritesbyClass(Lander):
             if lander.landed == False and lander.crashed == False:
                 lander.step()
                 if lander.collidingWithSprites(Turrain):
                     if lander.rotation > 1 or lander.rotation < -1 or lander.speed > lander.speedlimit:
-                        Explosion((lander.x, lander.y))
-                        lander.x = -100
-                        lander.y = -100
-                        lander.crashed = True
-                        print('You crashed')
-                        print('Press "Enter" to play again')
-                        print("")
+                        self.crash()
+                    elif lander.collidingWithSprites(Turrain).y < lander.y + lander.radius:
+                        self.crash()
                     else:
                         lander.landed = True
                         lander.rotation = 0
@@ -169,13 +174,7 @@ class MarsLanderGame(App):
                         print("")
                 elif lander.collidingWithSprites(LandingArea):
                     if lander.speed > lander.speedlimit:
-                        Explosion((lander.x, lander.y))
-                        lander.x = -100
-                        lander.y = -100
-                        lander.crashed = True
-                        print('You crashed')
-                        print('Press "Enter" to play again')
-                        print("")
+                        self.crash()
                     else:
                         lander.landed = True
                         lander.rotation = 0
@@ -184,13 +183,7 @@ class MarsLanderGame(App):
                         print('Press "Enter" to play again')
                         print("")
                 elif lander.x < 10 or lander.x > self.width - 10:
-                    Explosion((lander.x, lander.y))
-                    lander.x = -100
-                    lander.y = -100
-                    lander.crashed = True
-                    print('You crashed')
-                    print('Press "Enter" to play again')
-                    print("")
+                        self.crash()
                     
         for explosion in self.getSpritesbyClass(Explosion):
             explosion.step()

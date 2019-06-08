@@ -69,8 +69,10 @@ class Lander(Sprite):
         self.speedlimit = 1
         self.landed = False
         self.crashed = False
+        self.thrusting = False
         
         MarsLanderGame.listenKeyEvent("keydown", "up arrow", self.thrustOn)
+        MarsLanderGame.listenKeyEvent("keyup", "up arrow", self.ThrustOff)
         MarsLanderGame.listenKeyEvent("keydown", "right arrow", self.rotateRight)
         MarsLanderGame.listenKeyEvent("keydown", "left arrow", self.rotateLeft)
         MarsLanderGame.listenKeyEvent("keydown", "space", self.togglePause)
@@ -78,6 +80,10 @@ class Lander(Sprite):
     def thrustOn(self, event):
         self.vx += -self.thrust * math.sin(self.rotation)
         self.vy += -self.thrust * math.cos(self.rotation)
+        self.thrusting = True
+        
+    def thrustOff(self, event):
+        self.thrusting = False
         
     def rotateRight(self, event):
         if self.paused == False:
@@ -92,8 +98,9 @@ class Lander(Sprite):
         
     def step(self):
         if self.paused == False and self.landed == False and self.crashed == False:
-            self.x += self.vx
-            self.y += self.vy
+            if self.thrusting:
+                self.x += self.vx
+                self.y += self.vy
             self.vy += self.gravity
             self.vx += self.wind * 0.001
             self.speed = (self.vx ** 2 + self.vy ** 2) ** 0.5

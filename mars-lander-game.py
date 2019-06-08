@@ -175,14 +175,14 @@ class MarsLanderGame(App):
                 if self.turrain:
                     if lander.rotation > 1 or lander.rotation < -1 or lander.speed > lander.speedlimit:
                         self.crash(lander)
-                    elif self.turrain[0].y > lander.y + lander.radius:
-                        self.crash(lander)
                     elif lander.x - lander.radius < self.turrain[0].x or lander.x + lander.radius > self.turrain[0].x + self.turrainwidth:
                         self.crash(lander)
                     else:
                         self.miss(lander)
                 elif self.landingarea:
-                    if lander.speed > lander.speedlimit or self.landingarea[0].y > lander.y + lander.radius:
+                    if lander.rotation > 1 or lander.rotation < -1 or lander.speed > lander.speedlimit:
+                        self.crash(lander)
+                    elif lander.x - lander.radius < self.landingarea[0].x or lander.x + lander.radius > self.landingarea[0].x + self.turrainwidth:
                         self.crash(lander)
                     else:
                         lander.landed = True

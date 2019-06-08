@@ -60,7 +60,7 @@ class Lander(Sprite):
         self.vy = 0
         self.gravity = 0.01
         self.wind = 0
-        self.thrust = 0.025
+        self.thrust = 0.05
         self.vr = 0.1
         self.rotation = 0
         self.paused = True

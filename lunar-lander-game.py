@@ -57,11 +57,14 @@ class Lander(Sprite):
         self.gravity = 0.02
         self.wind = 0
         self.thrust = 1
-        self.rotation = 1
-    """    
+        self.rotation = 0
+        
+    LunarLanderGame.listenKeyEvent("keydown", "up arrow", self.thrustOn)
+    #LunarLanderGame.listenKeyEvent("keyup", "up arrow", self.thrustOff)
+        
     def thustOn(self, event):
-        self.vx += 
-    """    
+        self.vx += -self.thrust * math.sin(self.rotation)
+        self.vy += -self.thrust * math.cos(self.rotation)
         
     def step(self):
         self.x += self.vx

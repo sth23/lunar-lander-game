@@ -147,6 +147,9 @@ class LunarLanderGame(App):
                         lander.landed = True
                         print('Press "Enter" to play again')
                 elif lander.x < 10 or lander.x > self.width - 10:
+                    Explosion((lander.x, lander.y))
+                    lander.x = -100
+                    lander.y = -100
                     lander.crashed == True
                     print('Press "Enter" to play again')
                     

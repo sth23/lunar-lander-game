@@ -184,7 +184,7 @@ class MarsLanderGame(App):
                             print('You landed successfully!  Congratulations!')
                             print('Press "Enter" to play again')
                             print("")
-                elif lander.x < 10 or lander.x > self.width - 10:
+                if lander.x < 10 or lander.x > self.width - 10:
                     Explosion((lander.x, lander.y))
                     lander.x = -100
                     lander.y = -100

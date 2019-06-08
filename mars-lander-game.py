@@ -110,6 +110,7 @@ class MarsLanderGame(App):
         self.createTurrain()
         self.turrain = []
         self.landingarea = []
+        self.deltaheight = 0
         
         MarsLanderGame.listenKeyEvent("keydown", "enter", self.playAgain)
         
@@ -132,7 +133,10 @@ class MarsLanderGame(App):
         self.turrainheight = random.randint(self.height * 3 // 4, self.height - 20)
         self.landingarea = random.randint(2, self.width // self.turrainwidth - 2)
         for x in range(0, self.width // self.turrainwidth + 1):
-            self.turrainheight = self.turrainheight + random.randint(-30, 30)
+            self.deltaheight = random.randint(-30,30)
+            while self.deltaheight == 0:
+                self.deltaheight = random.randint(-30,30)
+            self.turrainheight = self.turrainheight + self.deltaheight
             if self.turrainheight > self.height - 10:
                 self.turrainheight -= 50
             elif self.turrainheight < 50:

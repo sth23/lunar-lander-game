@@ -207,8 +207,9 @@ class MarsLanderGame(App):
     def step(self):
         for lander in self.getSpritesbyClass(Lander):
             if lander.landed == False and lander.crashed == False:
-                [fuel.destroy() for fuel in self.getSpritesbyClass(Fuel)]
-                Fuel(lander.fuel)
+                [fuelbar.destroy() for fuelbar in self.getSpritesbyClass(FuelBar)]
+                [fuellevel.destroy() for fuellevel in self.getSpritesbyClass(FuelLevel)]
+                FuelBar(lander.fuel)
                 lander.step()
                 self.turrain = lander.collidingWithSprites(Turrain)
                 self.landingarea = lander.collidingWithSprites(LandingArea)

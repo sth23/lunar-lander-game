@@ -5,7 +5,7 @@ Credit: Tutorials
 Assignment: Create an old-school Mars Lander game
 """
 
-from ggame import App, RectangleAsset, PolygonAsset, CircleAsset, ImageAsset, Frame, Sprite, LineStyle, Color
+from ggame import App, RectangleAsset, PolygonAsset, CircleAsset, ImageAsset, TextAsset, Frame, Sprite, LineStyle, Color
 import math
 import random
 

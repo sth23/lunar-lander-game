@@ -71,7 +71,7 @@ class Lander(Sprite):
         self.crashed = False
         self.thrusting = False
         self.landingarea = False
-        self.fuel = 100
+        self.fuel = 20
         
         MarsLanderGame.listenKeyEvent("keydown", "up arrow", self.thrustOn)
         MarsLanderGame.listenKeyEvent("keyup", "up arrow", self.thrustOff)

@@ -132,7 +132,7 @@ class MarsLanderGame(App):
                 [turrain.destroy() for turrain in self.getSpritesbyClass(Turrain)]
                 [landingarea.destroy() for landingarea in self.getSpritesbyClass(LandingArea)]
                 self.createTurrain()
-                self.landingarea = False
+                lander.landingarea = False
             else:
                 self.resetLander(lander)
 

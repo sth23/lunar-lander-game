@@ -89,7 +89,6 @@ class Lander(Sprite):
         self.thrusting = True
         if self.fuel > 0:
             self.fuel -= 1
-            print(self.fuel)
         
     def thrustOff(self, event):
         self.thrusting = False

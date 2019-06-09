@@ -110,6 +110,11 @@ class MarsLanderGame(App):
     def __init__(self):
         super().__init__()
         
+        print('Press "space" to pause / unpause game')
+        print('Press right arrow to rotate lander clockwise')
+        print('Press left arrow to rotate lander counterclockwise')
+        print("Press up arrow to activate lander's thrusters")
+        
         self.lander = Lander((self.width / 2, 30))
         
         self.landingarea = 0
@@ -119,11 +124,6 @@ class MarsLanderGame(App):
         self.turrain = []
         self.landingarea = []
         self.deltaheight = 0
-        
-        print('Press "space" to pause / unpause game')
-        print('Press right arrow to rotate lander clockwise')
-        print('Press left arrow to rotate lander counterclockwise')
-        print("Press up arrow to activate lander's thrusters")
         
         MarsLanderGame.listenKeyEvent("keydown", "enter", self.playAgain)
         
@@ -170,7 +170,7 @@ class MarsLanderGame(App):
         self.windstrength = ["Very Strong West Wind", "Strong West Wind", "Moderate West Wind", "Light to Moderate West Wind", "Light West Wind", "No Wind", "Light East Wind", "Light to Moderate East Wind", "Moderate East Wind", "Strong East Wind", "Very Strong East Wind"]
         print(self.windstrength[self.lander.wind + 5])
         print("")
-        print('Press "Space" to start / pause')
+        print('Press "Space" to start game')
         print("")
         
     def crash(self, lander):

@@ -58,7 +58,7 @@ class FuelBar(Sprite):
         
 class FuelLevel(Sprite):
     def __init__(self, fuel):
-        self.fuellevel = TextAsset("Fuel: " + str(fuel), style="10pt Arial")
+        self.fuellevel = TextAsset("Fuel: " + str(fuel), style="15pt Arial")
         super().__init__(self.fuellevel, (13, 10))
         
 class Lander(Sprite):

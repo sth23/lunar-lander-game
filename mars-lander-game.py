@@ -53,7 +53,7 @@ class LandingArea(Sprite):
 class FuelBar(Sprite):
     def __init__(self, fuel):
         self.fuelbar = RectangleAsset(fuel, 23, noline, red)
-        super().__init__(self.fuelbar, (10, 10))
+        super().__init__(self.fuelbar, (12, 10))
         FuelLevel(fuel)
         
 class FuelLevel(Sprite):

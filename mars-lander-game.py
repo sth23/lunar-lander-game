@@ -114,6 +114,7 @@ class MarsLanderGame(App):
         print('Press right arrow to rotate lander clockwise')
         print('Press left arrow to rotate lander counterclockwise')
         print("Press up arrow to activate lander's thrusters")
+        print('')
         
         self.lander = Lander((self.width / 2, 30))
         

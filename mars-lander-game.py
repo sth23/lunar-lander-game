@@ -120,6 +120,11 @@ class MarsLanderGame(App):
         self.landingarea = []
         self.deltaheight = 0
         
+        print('Press "space" to pause / unpause game')
+        print('Press right arrow to rotate lander clockwise')
+        print('Press left arrow to rotate lander counterclockwise')
+        print("Press up arrow to activate lander's thrusters")
+        
         MarsLanderGame.listenKeyEvent("keydown", "enter", self.playAgain)
         
     def playAgain(self, event):

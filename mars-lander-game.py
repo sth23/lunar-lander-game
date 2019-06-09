@@ -81,7 +81,8 @@ class Lander(Sprite):
         
     def thrustOn(self, event):
         self.thrusting = True
-        self.fuel -= 1
+        if self.fuel > 0:
+            self.fuel -= 1
         print(self.fuel)
         
     def thrustOff(self, event):
@@ -100,7 +101,7 @@ class Lander(Sprite):
         
     def step(self):
         if self.paused == False and self.landed == False and self.crashed == False:
-            if self.thrusting:
+            if self.thrusting and self.fuel > 0:
                 self.vx += -self.thrust * math.sin(self.rotation)
                 self.vy += -self.thrust * math.cos(self.rotation)
             self.x += self.vx

@@ -71,7 +71,8 @@ class Lander(Sprite):
         self.crashed = False
         self.thrusting = False
         self.landingarea = False
-        self.fuel = 20
+        self.fuellimit = 50
+        self.fuel = self.fuellimit
         
         MarsLanderGame.listenKeyEvent("keydown", "up arrow", self.thrustOn)
         MarsLanderGame.listenKeyEvent("keyup", "up arrow", self.thrustOff)
@@ -83,7 +84,7 @@ class Lander(Sprite):
         self.thrusting = True
         if self.fuel > 0:
             self.fuel -= 1
-        print(self.fuel)
+            print(self.fuel)
         
     def thrustOff(self, event):
         self.thrusting = False
@@ -150,6 +151,7 @@ class MarsLanderGame(App):
         lander.rotation = 0
         lander.vx = 0
         lander.vy = 0
+        lander.fuel = lander.fuellimit
         
     def createTurrain(self):
         self.turrainheight = random.randint(self.height * 3 // 4, self.height - 20)

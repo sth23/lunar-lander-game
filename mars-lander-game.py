@@ -52,7 +52,7 @@ class LandingArea(Sprite):
         
 class FuelBar(Sprite):
     def __init__(self, fuel):
-        self.fuelbar = RectangleAsset(fuel, 20, noline, red)
+        self.fuelbar = RectangleAsset(fuel, 22, noline, red)
         super().__init__(self.fuelbar, (10, 10))
         FuelLevel(fuel)
         
@@ -82,7 +82,7 @@ class Lander(Sprite):
         self.crashed = False
         self.thrusting = False
         self.landingarea = False
-        self.fuellimit = 75
+        self.fuellimit = 100
         self.fuel = self.fuellimit
         
         MarsLanderGame.listenKeyEvent("keydown", "up arrow", self.thrustOn)

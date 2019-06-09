@@ -53,13 +53,13 @@ class LandingArea(Sprite):
 class FuelBar(Sprite):
     def __init__(self, fuel):
         self.fuelbar = RectangleAsset(fuel, 23, noline, red)
-        super().__init__(self.fuelbar, (12, 10))
+        super().__init__(self.fuelbar, (10, 10))
         FuelLevel(fuel)
         
 class FuelLevel(Sprite):
     def __init__(self, fuel):
         self.fuellevel = TextAsset("Fuel: " + str(fuel))
-        super().__init__(self.fuellevel, (10, 10))
+        super().__init__(self.fuellevel, (13, 10))
         
 class Lander(Sprite):
     ship = PolygonAsset([(0,15), (7.5,0), (15,15), (7.5,7.5)], noline, black)

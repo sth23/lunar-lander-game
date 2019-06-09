@@ -50,6 +50,11 @@ class LandingArea(Sprite):
     def __init__(self, asset, position):
         super().__init__(asset, position)
         
+class Fuel(Sprite):
+    def __init__(self, fuel):
+        self.fuelbar = RectangleAsset(fuel, 10, noline, red)
+        super().__init__(self.fuelbar, (10, 10))
+        
 class Lander(Sprite):
     ship = PolygonAsset([(0,15), (7.5,0), (15,15), (7.5,7.5)], noline, black)
     
@@ -105,6 +110,7 @@ class Lander(Sprite):
             if self.thrusting and self.fuel > 0:
                 self.vx += -self.thrust * math.sin(self.rotation)
                 self.vy += -self.thrust * math.cos(self.rotation)
+            Fuel(self.fuel)
             self.x += self.vx
             self.y += self.vy
             self.vy += self.gravity
@@ -197,6 +203,7 @@ class MarsLanderGame(App):
     def step(self):
         for lander in self.getSpritesbyClass(Lander):
             if lander.landed == False and lander.crashed == False:
+                [fuel.destroy() for fuel in self.getSpritesbyClass(Fuel)]
                 lander.step()
                 self.turrain = lander.collidingWithSprites(Turrain)
                 self.landingarea = lander.collidingWithSprites(LandingArea)
@@ -227,8 +234,8 @@ class MarsLanderGame(App):
         self.turrain = []
         self.landingarea = []
                     
-        for explosion in self.getSpritesbyClass(Explosion):
-            explosion.step()
+        [explosion.step() for explosion in self.getSpritesbyClass(Explosion)]
+            
         
 myapp = MarsLanderGame()
 myapp.run()

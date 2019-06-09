@@ -203,6 +203,7 @@ class MarsLanderGame(App):
                         self.crash(lander)
                     else:
                         lander.landed = True
+                        lander.landingarea = True
                         lander.rotation = 0
                         #lander.speedlimit -= 0.05
                         print('You landed successfully!  Congratulations!')

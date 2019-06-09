@@ -110,7 +110,6 @@ class Lander(Sprite):
             if self.thrusting and self.fuel > 0:
                 self.vx += -self.thrust * math.sin(self.rotation)
                 self.vy += -self.thrust * math.cos(self.rotation)
-            Fuel(self.fuel)
             self.x += self.vx
             self.y += self.vy
             self.vy += self.gravity
@@ -204,6 +203,7 @@ class MarsLanderGame(App):
         for lander in self.getSpritesbyClass(Lander):
             if lander.landed == False and lander.crashed == False:
                 [fuel.destroy() for fuel in self.getSpritesbyClass(Fuel)]
+                Fuel(lander.fuel)
                 lander.step()
                 self.turrain = lander.collidingWithSprites(Turrain)
                 self.landingarea = lander.collidingWithSprites(LandingArea)

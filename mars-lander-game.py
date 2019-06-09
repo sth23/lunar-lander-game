@@ -110,10 +110,8 @@ class MarsLanderGame(App):
     def __init__(self):
         super().__init__()
         
-        print('Press "space" to pause / unpause game')
-        print('Press right arrow to rotate lander clockwise')
-        print('Press left arrow to rotate lander counterclockwise')
-        print("Press up arrow to activate lander's thrusters")
+        print('Press "space" to pause / unpause game.  Press "right arrow" to rotate lander clockwise.  Press left arrow to rotate lander counterclockwise.  Press up arrow to activate lander\'s thrusters.')
+        print('Aim for the red landing area.')
         print('')
         
         self.lander = Lander((self.width / 2, 30))

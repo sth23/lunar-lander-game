@@ -100,11 +100,11 @@ class Lander(Sprite):
         self.thrusting = False
         
     def rotateRight(self, event):
-        if self.paused == False and self.landed = False:
+        if self.paused == False and self.landed == False:
             self.rotation -= self.vr
         
     def rotateLeft(self, event):
-        if self.paused == False and self.landed = False:
+        if self.paused == False and self.landed == False:
             self.rotation += self.vr
         
     def togglePause(self, event):

@@ -100,11 +100,11 @@ class Lander(Sprite):
         self.thrusting = False
         
     def rotateRight(self, event):
-        if self.paused == False:
+        if self.paused == False and self.landed = False:
             self.rotation -= self.vr
         
     def rotateLeft(self, event):
-        if self.paused == False:
+        if self.paused == False and self.landed = False:
             self.rotation += self.vr
         
     def togglePause(self, event):
@@ -234,9 +234,9 @@ class MarsLanderGame(App):
                         print('Press "Enter" to play again')
                         print("")
                 elif lander.x < 10 or lander.x > self.width - 10:
-                        self.miss(lander)
-                        lander.x = -100
-                        lander.y = -100
+                    self.miss(lander)
+                    lander.x = -100
+                    lander.y = -100
         self.turrain = []
         self.landingarea = []
                     
